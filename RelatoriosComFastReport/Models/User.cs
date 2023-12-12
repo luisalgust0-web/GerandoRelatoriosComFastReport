@@ -7,5 +7,6 @@
         public string LastName { get; set; }
         public DateTime RegisterDate { get; set; }
         public string PhoneNumber { get; set; }
+
     }
 }
