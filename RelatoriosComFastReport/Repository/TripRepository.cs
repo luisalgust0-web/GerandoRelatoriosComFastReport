@@ -30,12 +30,12 @@ namespace RelatoriosComFastReport.Repository
             AddTrip("fortaleza", new DateTime(), new DateTime(), 2, 2);
             AddTrip("guaruja", new DateTime(), new DateTime(), 2, 3);
             AddTrip("salvador", new DateTime(), new DateTime(), 2, 4);
-            AddTrip("brasilia", new DateTime(), new DateTime(), 4, 10);
             AddTrip("mogi das cruzes", new DateTime(), new DateTime(), 2, 5);
             AddTrip("bauru", new DateTime(), new DateTime(), 3, 6);
             AddTrip("capao", new DateTime(), new DateTime(), 3, 7);
             AddTrip("ceilandia", new DateTime(), new DateTime(), 3, 8);
             AddTrip("valparaiso", new DateTime(), new DateTime(), 4, 9);
+            AddTrip("brasilia", new DateTime(), new DateTime(), 4, 10);
         }
 
         public List<Trip> GetAllTrips()
