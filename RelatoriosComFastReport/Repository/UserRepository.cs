@@ -38,5 +38,10 @@ namespace RelatoriosComFastReport.Repository
         {
             return _context.Users.ToList();
         }
+
+        public User GetUser(int id)
+        {
+            return _context.Users.Where(x => x.Id == id).FirstOrDefault();
+        }
     }
 }
