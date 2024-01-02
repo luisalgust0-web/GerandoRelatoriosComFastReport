@@ -9,6 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddScoped<ITripRepository, TripRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IUserTripRelationshipRepository, UserTripRelationshipRepository>();
 
 
 builder.Services.AddControllers();
@@ -18,6 +19,11 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<InMemoryContext>(options =>
     options.UseInMemoryDatabase("InMemoryProvider"));
+
+using (var context = new InMemoryContext())
+{
+    context.Database.EnsureCreated();
+}
 
 var app = builder.Build();
 

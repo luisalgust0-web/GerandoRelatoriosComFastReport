@@ -10,5 +10,14 @@
 
 
         public User User { get; set; }
+
+        public Trip(string destiny, DateTime startTrip, DateTime endTrip, int userId, int id)
+        {
+            Id = id;
+            StartTrip = startTrip;
+            EndTrip = endTrip;
+            Destiny = destiny;
+            UserId = userId;
+        }
     }
 }

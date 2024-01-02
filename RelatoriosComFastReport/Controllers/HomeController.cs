@@ -17,13 +17,6 @@ namespace RelatoriosComFastReport.Controllers
             _userRepository = userRepository;
         }
 
-        [HttpGet("CargasIniciais")]
-        public void CargaIniciais()
-        {
-            _tripRepository.CargaTrip();
-            _userRepository.CargaUsers();
-        }
-
         [HttpGet("GetTrips")]
         public List<Trip> GetTrips()
         {

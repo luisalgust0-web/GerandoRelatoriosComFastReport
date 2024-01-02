@@ -16,7 +16,7 @@ namespace RelatoriosComFastReport.Repository
             _userRepository = userRepository;
         }
 
-        public List<UserTripRelationship> GetUserTripRelationship()
+        public List<UserTripRelationship> GetUsersTripRelationship()
         {
 
             List<UserTripRelationship> userTripRelationships = new List<UserTripRelationship>();

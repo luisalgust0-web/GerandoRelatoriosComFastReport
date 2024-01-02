@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="12/28/2023 19:36:32" ReportInfo.Modified="12/28/2023 19:36:32" ReportInfo.CreatorVersion="2024.1.1.0">
+  <Dictionary>
+    <BusinessObjectDataSource Name="userTripRelationships" ReferenceName="userTripRelationships" DataType="System.Collections.Generic.List`1[[RelatoriosComFastReport.Models.UserTripRelationship, RelatoriosComFastReport, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]" Enabled="true">
+      <Column Name="UserId" DataType="System.Int32"/>
+      <Column Name="FirstName" DataType="System.String"/>
+      <Column Name="LastName" DataType="System.String"/>
+      <Column Name="NumberTrips" DataType="System.Int32"/>
+    </BusinessObjectDataSource>
+  </Dictionary>
+</Report>

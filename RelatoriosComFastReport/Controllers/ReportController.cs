@@ -14,12 +14,14 @@ namespace RelatoriosComFastReport.Controllers
         private readonly IWebHostEnvironment _webHostEnv;
         private readonly ITripRepository _tripRepository;
         private readonly IUserRepository _userRepository;
+        private readonly IUserTripRelationshipRepository _userTripRelationshipRepository;
 
-        public ReportController(IWebHostEnvironment webHostEnv, ITripRepository tripRepository, IUserRepository userRepository)
+        public ReportController(IWebHostEnvironment webHostEnv, ITripRepository tripRepository, IUserRepository userRepository, IUserTripRelationshipRepository userTripRelationshipRepository)
         {
             _webHostEnv = webHostEnv;
             _tripRepository = tripRepository;
             _userRepository = userRepository;
+            _userTripRelationshipRepository = userTripRelationshipRepository;
         }
 
         [HttpGet("CreateReportFrx")]
@@ -29,10 +31,10 @@ namespace RelatoriosComFastReport.Controllers
 
             Report fReport = new Report();
 
-            List<User> user = _userRepository.GetAllUsers();
+            List<UserTripRelationship> userTripRelationships = _userTripRelationshipRepository.GetUsersTripRelationship();
 
             
-            fReport.Dictionary.RegisterBusinessObject(user, "userList", 10, true);
+            fReport.Dictionary.RegisterBusinessObject(userTripRelationships, "userTripRelationships", 10, true);
             fReport.Report.Save(reportFile);
 
             return Ok($"Caminho Report.Frx : {reportFile}");
@@ -78,24 +80,24 @@ namespace RelatoriosComFastReport.Controllers
             return File(memoryStream.ToArray(), "application/pdf", Path.GetFileNameWithoutExtension("UserReport") + ".pdf");
         }
 
-        //[HttpGet("GenerateTravelUserRelationshipReport")]
-        //public IActionResult GenerateReport()
-        //{
-        //    string reportFile = Path.Combine(_webHostEnv.ContentRootPath, @"reports\Report.frx");
+        [HttpGet("GenerateUserTripRelationshipReport")]
+        public IActionResult GenerateUserTripRelationshipReport()
+        {
+            string reportFile = Path.Combine(_webHostEnv.ContentRootPath, @"reports\UserTripRelationshipReport.frx");
 
-        //    Report fReport = new Report();
+            Report fReport = new Report();
 
-        //    List<Trip> trips = _tripRepository.GetAllTrips();
+            List<UserTripRelationship> userTripRelationships = _userTripRelationshipRepository.GetUsersTripRelationship();
 
-        //    fReport.Report.Load(reportFile);
-        //    fReport.Dictionary.RegisterBusinessObject(trips, "tripList", 10, true);
-        //    fReport.Prepare();
-        //    PDFSimpleExport pdfExport = new PDFSimpleExport();
+            fReport.Report.Load(reportFile);
+            fReport.Dictionary.RegisterBusinessObject(userTripRelationships, "userTripRelationships", 10, true);
+            fReport.Prepare();
+            PDFSimpleExport pdfExport = new PDFSimpleExport();
 
-        //    using MemoryStream memoryStream = new MemoryStream();
-        //    pdfExport.Export(fReport, memoryStream);
-        //    memoryStream.Flush();
-        //    return File(memoryStream.ToArray(), "application/pdf", Path.GetFileNameWithoutExtension("Report") + ".pdf");
-        //}
+            using MemoryStream memoryStream = new MemoryStream();
+            pdfExport.Export(fReport, memoryStream);
+            memoryStream.Flush();
+            return File(memoryStream.ToArray(), "application/pdf", Path.GetFileNameWithoutExtension("UserTripRelationshipReport") + ".pdf");
+        }
     }
 }
