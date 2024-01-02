@@ -27,7 +27,7 @@ namespace RelatoriosComFastReport.Controllers
         [HttpGet("CreateReportFrx")]
         public IActionResult CreateReport()
         {
-            string reportFile = Path.Combine(_webHostEnv.ContentRootPath, @"reports\UserTripRelationshipReport.frx");
+            string reportFile = Path.Combine(_webHostEnv.ContentRootPath, @"reports\exampleReport.frx");
 
             Report fReport = new Report();
 
