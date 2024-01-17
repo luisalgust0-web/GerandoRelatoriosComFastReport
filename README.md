@@ -2,6 +2,7 @@
 
 
 1 - Projeto elaborado em .NET Entity Framework utilizando In-Memory Database e o FastReport para gerar o relatórios.
+
 2 - É realizado uma propagação de dados para preencher o In-Memory Database com registros dos dois modelos (Trip e User).
 
        //Propagando dados no OnModelCreating dentro da classe InMemoryContext
